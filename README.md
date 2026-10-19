@@ -20,4 +20,4 @@ I built **Link Station**, a web service that removes Chrome's new tab shortcut l
 
 ### Official YouTube Channel 🔽
 (It's empty for now, but stay tuned!)
-([youtube.com](https://www.youtube.com/@user-LS-o1m))
+[https://www.youtube.com/@user-LS-o1m]
