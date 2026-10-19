@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="components.css">
   <link rel="stylesheet" href="modal.css">
   <link rel="stylesheet" href="responsive.css">
+  <script src="settings.js" defer></script>
 
   <!-- Google Search Console 인증 -->
   <meta
@@ -220,14 +221,25 @@
 
 
         <!-- 튜토리얼 버튼 -->
-        <button
-          id="help-btn"
-          class="help-btn"
-          type="button"
-          aria-label="LS 튜토리얼"
-        >
-          ?
-        </button>
+          <button
+            id="help-btn"
+            class="help-btn"
+            type="button"
+            aria-label="LS 튜토리얼"
+          >
+            ?
+          </button>
+
+          <!-- 설정 버튼 -->
+          <button
+            id="settings-btn"
+            class="help-btn settings-btn"
+            type="button"
+            aria-label="설정"
+            title="설정"
+          >
+            ⚙
+          </button>
 
       </div>
 
@@ -663,7 +675,48 @@
 
   </div>
 
+<!-- 설정 모달 -->
+  <div id="settings-modal" class="modal-overlay">
+    <div class="modal-content settings-modal-content">
+      <button
+        id="close-settings-btn"
+        class="modal-close"
+        type="button"
+        aria-label="설정 창 닫기"
+      >×</button>
 
+      <h2>⚙ 설정</h2>
+      <p class="settings-description">
+        Link Station 설정 및 개발자 문의
+      </p>
+
+      <button
+        id="developer-contact-btn"
+        class="settings-menu-item"
+        type="button"
+      >
+        <span>✉️</span>
+        <span>개발자 문의</span>
+        <span class="settings-arrow">›</span>
+      </button>
+
+      <div id="developer-contact-panel" class="contact-panel hidden">
+        <h3>개발자 문의</h3>
+        <p>오류 제보 및 개선 의견은 아래 이메일로 보내주세요.</p>
+
+        <a
+          class="developer-email"
+          href="mailto:linkstation0010@gmail.com"
+        >linkstation0010@gmail.com</a>
+
+        <button
+          id="copy-developer-email-btn"
+          class="settings-action-btn"
+          type="button"
+        >이메일 주소 복사</button>
+      </div>
+    </div>
+  </div>
   <!-- =========================
        JavaScript
   ========================= -->
