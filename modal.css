@@ -522,3 +522,155 @@
 .tutorial-close-bottom-btn:hover {
   background-color: #353540;
 }
+
+
+/* =========================
+   Link Station 설정 모달
+========================= */
+
+.settings-modal-content {
+  position: relative;
+  background: #18181f;
+  color: #fff;
+  padding: 30px;
+  border: 1px solid #33333f;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 460px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+}
+
+.settings-modal-content h2 {
+  margin: 0 0 12px;
+  padding-right: 35px;
+  font-size: 24px;
+}
+
+.settings-description {
+  margin: 0 0 22px;
+  color: #aaaab5;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* 닫기 버튼 */
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #aaaab5;
+  font-size: 25px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.modal-close:hover {
+  background: #292932;
+  color: #fff;
+}
+
+/* 개발자 문의 메뉴 */
+.settings-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #33333f;
+  border-radius: 10px;
+  background: #1e1e27;
+  color: #eeeef5;
+  text-align: left;
+  font-size: 15px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.settings-menu-item:hover {
+  background: #242330;
+  border-color: #6d5dfc;
+}
+
+.settings-arrow {
+  margin-left: auto;
+  color: #aaaab5;
+  font-size: 22px;
+}
+
+/* 문의 내용 */
+.contact-panel {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid #33333f;
+}
+
+.contact-panel h3 {
+  margin: 0 0 12px;
+  color: #fff;
+  font-size: 18px;
+}
+
+.contact-panel p {
+  margin: 0 0 14px;
+  color: #b8b8c2;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* 이메일 링크 */
+.developer-email {
+  display: inline-block;
+  color: #a99fff;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.developer-email:hover {
+  color: #c3bcff;
+  text-decoration: underline;
+}
+
+/* 이메일 복사 버튼 */
+.settings-action-btn {
+  display: block;
+  width: 100%;
+  margin-top: 14px;
+  padding: 11px 14px;
+  border: 1px solid #6d5dfc;
+  border-radius: 8px;
+  background: #6d5dfc;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.settings-action-btn:hover {
+  background: #5b4bea;
+}
+
+/* 숨김 처리 */
+#settings-modal .contact-panel.hidden {
+  display: none !important;
+}
+
+/* 작은 화면 */
+@media (max-width: 480px) {
+  .settings-modal-content {
+    padding: 24px 20px;
+  }
+
+  .settings-modal-content h2 {
+    font-size: 22px;
+  }
+}
