@@ -4,8 +4,10 @@ I created 'Link Station,' a web service that removes the limit on the number of 
 
 ### 📌 Overview
 * **Title:** 🚀 Link Station - Unlimited Chrome Shortcuts Dashboard
-* **Live Site:** [Insert link here] 👉 *(Crucial backlink for SEO!)*
-* **Preview:** [Insert purple train illustration or mascot image URL here]
+* **Live Site:** https://link-station.capycat0513.workers.dev/
+* **Preview:**
+* <img width="1499" height="775" alt="스크린샷 2026-11-12 오후 5 42 50" src="https://github.com/user-attachments/assets/222c5f09-c23b-45f8-ba31-062392b74cf2" />
+
 
 ### ✨ Key Features
 * **Unlimited shortcuts:** Easily add and delete links without limitations.
@@ -20,4 +22,4 @@ I created 'Link Station,' a web service that removes the limit on the number of 
 
 ### Official YouTube Channel 🔽
 (It's empty for now, but stay tuned!)
-[https://www.youtube.com/@user-LS-o1m]
+https://www.youtube.com/@user-LS-o1m
