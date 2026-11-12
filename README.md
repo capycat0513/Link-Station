@@ -1,6 +1,6 @@
 # Link Station
 
-I built **Link Station**, a web service that removes Chrome's new tab shortcut limit. To achieve **$0 hosting costs**, I used Cloudflare Workers and LocalStorage. Details below:
+I created 'Link Station,' a web service that removes the limit on the number of shortcuts displayed on Chrome's 'new tab' page. To keep hosting costs at zero while ensuring faster performance than any alternative, I utilized Cloudflare Workers and LocalStorage. Further details are provided below.
 
 ### 📌 Overview
 * **Title:** 🚀 Link Station - Unlimited Chrome Shortcuts Dashboard
