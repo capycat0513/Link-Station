@@ -3,130 +3,84 @@
 // ==========================================
 
 saveShortcutBtn.addEventListener('click', () => {
-  const name =
-    siteNameInput.value.trim();
-
-  let url =
-    siteUrlInput.value
-      .trim()
-      .replace(/\s+/g, '');
-
-  const useCustomIcon =
-    iconToggle.checked;
-
-  const customIconUrl =
-    customIconUrlInput.value.trim();
-
+  const name = siteNameInput.value.trim();
+  let url = siteUrlInput.value.trim().replace(/\s+/g, '');
+  const useCustomIcon = iconToggle.checked;
+  const customIconUrl = customIconUrlInput.value.trim();
 
   // 이름 / 주소 입력 확인
   if (!name || !url) {
-    showAlert(
-      '사이트 이름과 주소를 모두 입력해주세요!'
-    );
-
+    showAlert('사이트 이름과 주소를 모두 입력해주세요!');
     return;
   }
 
-
   // https://가 없으면 자동 추가
-  if (!/^https?:\/\//i.test(url)) {
-    url = 'https://' + url;
-  }
-
+  if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
 
   // URL 검사
   if (!isSafeHttpUrl(url)) {
-    showAlert(
-      '올바른 사이트 주소를 입력해주세요!'
-    );
-
+    showAlert('올바른 사이트 주소를 입력해주세요!');
     return;
   }
 
-
   let finalIcon = '';
 
-
-  // 커스텀 아이콘
-  if (useCustomIcon && customIconUrl) {
-    const trimmedCustomIconUrl =
-      customIconUrl.trim();
-
-    if (!isSafeImageUrl(trimmedCustomIconUrl)) {
-      showAlert(
-        '올바른 이미지 주소를 입력해주세요!'
-      );
-
+  // 업로드 이미지가 있으면 우선 적용
+  if (useCustomIcon && selectedIconData) {
+    finalIcon = selectedIconData;
+  }
+  // 기존 이미지 URL 방식 유지
+  else if (useCustomIcon && customIconUrl) {
+    if (!isSafeImageUrl(customIconUrl)) {
+      showAlert('올바른 이미지 주소를 입력해주세요!');
       return;
     }
-
-    finalIcon = trimmedCustomIconUrl;
-
-  } else {
-
-    // 사이트 favicon 자동 가져오기
+    finalIcon = customIconUrl;
+  }
+  // 커스텀 아이콘을 사용하지 않으면 사이트 파비콘 적용
+  else {
     try {
-      const domain =
-        new URL(url).hostname;
-
-      finalIcon =
-        `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
-
+      const domain = new URL(url).hostname;
+      finalIcon = `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
     } catch (e) {
-      console.error(
-        'URL을 확인할 수 없습니다.',
-        e
-      );
-
+      console.error('URL을 확인할 수 없습니다.', e);
       finalIcon = '';
     }
   }
 
+  // 저장 실패 시 기존 데이터를 복구할 수 있도록 복사
+  const previousShortcuts = JSON.parse(JSON.stringify(shortcuts));
 
   // 기존 바로가기 수정
   if (editingShortcutId !== null) {
-
-    const index =
-      shortcuts.findIndex(
-        s => s.id === editingShortcutId
-      );
-
+    const index = shortcuts.findIndex(s => s.id === editingShortcutId);
     if (index !== -1) {
       shortcuts[index].name = name;
       shortcuts[index].url = url;
       shortcuts[index].icon = finalIcon;
     }
-
   }
-
-
   // 새로운 바로가기 추가
   else {
-
-    const newShortcut = {
+    shortcuts.push({
       id: Date.now(),
-      name: name,
-      url: url,
+      name,
+      url,
       icon: finalIcon,
-
       clicks: 0,
       timestamp: Date.now(),
-
-      // 마지막으로 사용한 시간
-      // 아직 사용하지 않았으므로 null
       lastUsed: null
-    };
-
-    shortcuts.push(newShortcut);
+    });
   }
 
+  if (!saveToStorage()) {
+    shortcuts = previousShortcuts;
+    renderShortcuts();
+    return;
+  }
 
   editingShortcutId = null;
-
-  saveToStorage();
-
   renderShortcuts();
-
   closeModal();
 });
 
@@ -136,10 +90,20 @@ saveShortcutBtn.addEventListener('click', () => {
 // ==========================================
 
 function saveToStorage() {
-  localStorage.setItem(
-    'my_shortcuts',
-    JSON.stringify(shortcuts)
-  );
+  try {
+    localStorage.setItem(
+      'my_shortcuts',
+      JSON.stringify(shortcuts)
+    );
+    return true;
+  } catch (error) {
+    console.error('바로가기 저장에 실패했습니다.', error);
+    showAlert(
+      '브라우저 저장 공간이 부족해 저장하지 못했습니다. 이미지 용량을 줄이거나 사용하지 않는 바로가기를 정리해주세요.',
+      '저장 공간 부족'
+    );
+    return false;
+  }
 }
 
 
@@ -472,28 +436,22 @@ function renderShortcuts() {
 
       const isCustomIcon =
         item.icon &&
-        !item.icon.includes(
-          'google.com/s2/favicons'
-        );
+        !item.icon.includes('google.com/s2/favicons');
 
-      iconToggle.checked =
-        isCustomIcon;
+      iconToggle.checked = Boolean(isCustomIcon);
+      clearCustomIconUpload();
 
       if (isCustomIcon) {
+        customIconGroup.classList.remove('hidden');
 
-        customIconGroup.classList.remove(
-          'hidden'
-        );
-
-        customIconUrlInput.value =
-          item.icon;
-
+        if (item.icon.startsWith('data:image/')) {
+          customIconUrlInput.value = '';
+          showCustomIconPreview(item.icon);
+        } else {
+          customIconUrlInput.value = item.icon;
+        }
       } else {
-
-        customIconGroup.classList.add(
-          'hidden'
-        );
-
+        customIconGroup.classList.add('hidden');
         customIconUrlInput.value = '';
       }
 
