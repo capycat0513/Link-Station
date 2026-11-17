@@ -36,6 +36,8 @@
 
   width: 90%;
   max-width: 400px;
+  max-height: 90vh;
+  overflow-y: auto;
 
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
 }
@@ -673,4 +675,122 @@
   .settings-modal-content h2 {
     font-size: 22px;
   }
+}
+
+
+/* =========================
+   커스텀 아이콘 파일 업로드
+========================= */
+
+.icon-upload-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 2px 0;
+  color: #777783;
+  font-size: 12px;
+}
+
+.icon-upload-divider::before,
+.icon-upload-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #33333f;
+}
+
+.icon-upload-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-height: 104px;
+  padding: 16px;
+  border: 1px dashed #5147a5;
+  border-radius: 10px;
+  background: rgba(109, 93, 252, 0.07);
+  color: #e8e6ff;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.icon-upload-label:hover {
+  border-color: #8b7fff;
+  background: rgba(109, 93, 252, 0.13);
+}
+
+.icon-upload-symbol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #6d5dfc;
+  color: #fff;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.icon-upload-label small {
+  color: #858591;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.custom-icon-preview {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border: 1px solid #393943;
+  border-radius: 10px;
+  background: #111117;
+}
+
+.custom-icon-preview img {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  border-radius: 8px;
+  object-fit: contain;
+  background: #20202a;
+}
+
+.custom-icon-preview-info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.custom-icon-preview-info strong {
+  color: #eeeef5;
+  font-size: 13px;
+}
+
+.custom-icon-preview-info span {
+  color: #92929f;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.remove-custom-icon-file {
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  border: 0;
+  border-radius: 7px;
+  background: #292932;
+  color: #c7c7d0;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.remove-custom-icon-file:hover {
+  background: #3a3038;
+  color: #fff;
 }
