@@ -350,7 +350,7 @@
       </div>
 
 
-      <!-- 커스텀 아이콘 URL -->
+      <!-- 커스텀 아이콘: URL 또는 파일 업로드 -->
       <div
         id="custom-icon-group"
         class="input-group hidden"
@@ -364,7 +364,40 @@
           type="text"
           id="custom-icon-url"
           placeholder="https://.../my-image.png"
+          autocomplete="off"
         >
+
+        <div class="icon-upload-divider">
+          <span>또는</span>
+        </div>
+
+        <label class="icon-upload-label" for="custom-icon-file">
+          <span class="icon-upload-symbol">＋</span>
+          <span>이미지 파일 선택</span>
+          <small>PNG, JPG, WEBP · 최대 5MB</small>
+        </label>
+
+        <input
+          type="file"
+          id="custom-icon-file"
+          accept="image/png,image/jpeg,image/webp"
+          hidden
+        >
+
+        <div id="custom-icon-preview" class="custom-icon-preview hidden">
+          <img id="custom-icon-preview-image" alt="선택한 아이콘 미리보기">
+          <div class="custom-icon-preview-info">
+            <strong>이미지 선택 완료</strong>
+            <span>저장하면 바로가기 아이콘으로 적용됩니다.</span>
+          </div>
+          <button
+            type="button"
+            id="remove-custom-icon-file"
+            class="remove-custom-icon-file"
+            aria-label="선택한 이미지 제거"
+            title="이미지 제거"
+          >×</button>
+        </div>
 
       </div>
 
