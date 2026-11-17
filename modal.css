@@ -794,3 +794,48 @@
   background: #3a3038;
   color: #fff;
 }
+
+/* 커스텀 아이콘 업로드 영역 스타일 보정 */
+#custom-icon-group .icon-upload-divider {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 8px 0;
+  color: #777783;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+#custom-icon-group .icon-upload-divider::before,
+#custom-icon-group .icon-upload-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #33333f;
+}
+
+#custom-icon-group label.icon-upload-label {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 104px;
+  box-sizing: border-box;
+  padding: 16px;
+  gap: 5px;
+  border: 1px dashed #5147a5;
+  border-radius: 10px;
+  background: rgba(109, 93, 252, 0.07);
+  color: #e8e6ff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+}
+
+#custom-icon-group label.icon-upload-label:hover {
+  border-color: #8b7fff;
+  background: rgba(109, 93, 252, 0.13);
+}
