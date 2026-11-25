@@ -7,7 +7,7 @@
 ## 📌 Overview
 
 * **Title**: Link Station - Unlimited Chrome Shortcuts Dashboard
-* **Live Site**: [https://workers.dev](https://workers.dev)
+* **Live Site**: [https://workers.dev]([https://workers.dev](https://link-station.capycat0513.workers.dev/))
 * **Preview**:
   * <img width="1499" height="775" alt="스크린샷 2026-11-12 오후 5 42 50" src="https://github.com/user-attachments/assets/222c5f09-c23b-45f8-ba31-062392b74cf2" />
 
